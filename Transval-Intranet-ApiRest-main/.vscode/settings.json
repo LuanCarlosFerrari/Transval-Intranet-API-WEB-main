@@ -1,0 +1,23 @@
+{
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.mount": [
+        [
+            "/src",
+            "./src"
+        ],
+        [
+            "/pdf",
+            "./pdf"
+        ]
+    ],
+    "liveServer.settings.CustomBrowser": "microsoft-edge",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        "**/*.scss",
+        "**/*.sass"
+    ],
+    "liveServer.settings.https": {
+        "enable": false
+    }
+}

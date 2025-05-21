@@ -1,0 +1,162 @@
+/* Styling for header */
+.header {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray);
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Container for header content */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1700px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Styling for logo */
+.logo {
+    padding: var(--spacing-xs);
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo img {
+    max-height: 45px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Styling for navigation menu */
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: left;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.nav-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-base);
+    border: none;
+    white-space: nowrap;
+}
+
+.nav-item:hover {
+    background-color: var(--color-gray);
+}
+
+/* Container for login section */
+.login-container {
+    margin-left: auto;
+    padding: 0 var(--spacing-md);
+    flex-shrink: 0;
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    padding: 25px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: auto;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .nav-menu {
+        gap: var(--spacing-sm);
+    }
+
+    .nav-item {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: var(--spacing-xs);
+    }
+
+    .mobile-menu-button {
+        display: flex; /* Only show on mobile */
+    }
+
+    .header-container {
+        justify-content: flex-start; /* Align items from the start */
+        gap: var(--spacing-); /* Add space between items */
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-gray-light);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .logo img {
+        max-height: 40px;
+    }
+
+    .login-container {
+        padding: 0 var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: var(--spacing-xs) 10px;
+    }
+
+    .logo img {
+        max-height: 35px;
+    }
+
+    .nav-item {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}

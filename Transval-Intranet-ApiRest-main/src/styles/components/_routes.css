@@ -1,0 +1,183 @@
+/* Container for the route calculator */
+.route-calculator {
+    padding: var(--spacing-xs);
+    background: var(--bg-white-transparent);
+    border-radius: var(--border-radius-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    max-height: 680px;
+    overflow-y: auto;
+}
+
+/* Container for input fields */
+.route-inputs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.input-group {
+    flex: 1;
+    margin-bottom: calc(var(--spacing-xs) / 2);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-xs) / 2);
+    color: var(--color-text);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: calc(var(--spacing-xs) / 2) var(--spacing-xs);
+    border: 1px solid var(--color-gray);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+}
+
+/* Container for route options */
+.route-options {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Button to calculate the route */
+.calculate-route {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.calculate-route:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Container for the map */
+.route-map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-box);
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+    position: relative;
+}
+
+/* Container for route details */
+.route-details {
+    background: var(--color-white);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-sm);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.route-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.info-item {
+    text-align: center;
+    padding: var(--spacing-xs);
+}
+
+.info-item span {
+    display: block;
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+}
+
+/* List of waypoints */
+.waypoints-list {
+    margin-top: var(--spacing-sm);
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.waypoint-item {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-gray);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .route-inputs {
+        flex-direction: column;
+    }
+    
+    .route-options {
+        flex-wrap: wrap;
+    }
+    
+    .route-map {
+        height: 300px;
+    }
+}
+
+/* Container for routes */
+.routes-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Container for route controls */
+.route-controls {
+    width: 30%;
+    height: 100%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Styling for toll information */
+#estimatedToll {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+}
+
+/* Styling for axle select dropdown */
+#axles {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-gray);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-white);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+}
+
+#axles:hover {
+    border-color: var(--color-primary);
+}
+
+#axles:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px #5b5e61;
+}

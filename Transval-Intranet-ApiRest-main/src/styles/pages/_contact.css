@@ -1,0 +1,79 @@
+/* Main section for contact information */
+.contact-section {
+    color: var(--color-white);
+    padding: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: none;
+}
+
+/* Title styling for contact section */
+.contact-title {
+    text-align: center;
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: none;
+}
+
+/* Subtitle styling for contact section */
+.contact-subtitle {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-white); /* Change from var(--color-black) to var(--color-white) */
+    text-shadow: var(--shadow-text); /* Added text shadow for better visibility */
+}
+
+/* Grid layout for contact information */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    text-shadow: none;
+}
+
+/* Individual contact block styling */
+.contact-block {
+    background: var(--bg-white-transparent);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+}
+
+.contact-block h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-black);
+}
+
+.contact-block p, 
+.contact-block a {
+    color: var(--color-black);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-block a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+/* Full-width location block */
+.location-block {
+    grid-column: 1 / -1;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: var(--spacing-md);
+    }
+    
+    .contact-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .contact-block {
+        padding: var(--spacing-sm);
+    }
+}

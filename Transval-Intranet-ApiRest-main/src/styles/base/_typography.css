@@ -1,0 +1,53 @@
+/* Add to src/styles/base/_typography.css */
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Unified title styling for all sections */
+.titulo-container h2 {
+    text-align: center;
+    margin: var(--spacing-xl) auto var(--spacing-lg);
+    color: var(--color-white);
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--shadow-text);
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .titulo-container h2 {
+        font-size: var(--font-size-lg);
+        margin: var(--spacing-lg) auto var(--spacing-md);
+    }
+}
+
+/* Text styles */
+.company-history {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.lgpd-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    max-width: 900px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
+}

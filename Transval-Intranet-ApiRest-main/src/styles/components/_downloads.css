@@ -1,0 +1,543 @@
+.downloads-container {
+    padding: var(--spacing-lg);
+    color: var(--color-white);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.department-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.department-title {
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+    padding-left: var(--spacing-md);
+    text-shadow: var(--shadow-text);
+    border-left: 4px solid var(--color-primary);
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+}
+
+.download-item {
+    background: var(--bg-white-transparent);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    color: var(--color-text);
+    transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.download-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-box);
+}
+
+/* Custom scrollbar for download items */
+.download-item::-webkit-scrollbar {
+    width: 6px;
+}
+
+.download-item::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-sm);
+}
+
+.download-item::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius-sm);
+}
+
+.download-item::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Firefox scrollbar for download items */
+.download-item {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.download-item i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.download-item h3 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.download-item p {
+    margin: 0;
+    font-size: var(--font-size-base);
+}
+
+.download-button {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-base);
+    margin-top: auto;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.download-button:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
+/* Custom scrollbar for container */
+.downloads-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.downloads-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-sm);
+}
+
+.downloads-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius-sm);
+}
+
+.downloads-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Firefox scrollbar for container */
+.downloads-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Adjust the main content area */
+.content-area {
+    flex: 1;
+    padding: var(--spacing-md);
+    position: relative;
+    background-color: var(--bg-black-transparent);
+    border-radius: var(--border-radius-md);
+    margin: 0 auto;
+    max-width: var(--container-max-width);
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    box-shadow: var(--shadow-box);
+}
+
+/* Add these new styles */
+.folder i {
+    color: var(--color-primary);
+    font-size: 3rem;
+}
+
+.folder-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+
+.folder-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    background-color: var(--color-primary-dark);
+}
+
+/* Add these new styles */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.back-button:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
+.titulo-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.downloads-table {
+    border-spacing: var(--spacing-lg);
+    border-collapse: separate;
+    width: 100%;
+}
+
+.downloads-table td {
+    width: 50%;
+    vertical-align: top;
+}
+
+.downloads-table .department-group {
+    margin-bottom: 0;
+}
+
+.downloads-table .download-item {
+    height: 100%;
+    margin-bottom: 0;
+}
+
+/*modal para informar que não é possivel visualizar o arquivo
+
+/* Modal Base Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* File Preview Modal Specific Styles */
+.file-preview-modal .modal-content {
+    background-color: #fefefe;
+    width: 80%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.file-preview-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+    border-radius: 6px 6px 0 0;
+    position: relative; /* Adicionar esta linha */
+}
+
+.file-preview-modal .modal-body {
+    flex: 1;
+    overflow: auto;
+    padding: 15px;
+    min-height: 300px;
+}
+
+.file-preview-modal .modal-footer {
+    padding: 12px 15px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f5f5f5;
+    border-radius: 0 0 6px 6px;
+}
+
+.close-modal {
+    color: #777;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    right: 15px; 
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.close-modal:hover {
+    color: #333;
+    background-color: #f1f1f1;   
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .file-preview-modal .modal-content {
+        width: 95%; /* Even wider on small screens */
+        max-height: 95vh;
+    }
+    
+    .file-preview-modal .modal-header,
+    .file-preview-modal .modal-footer,
+    .file-preview-modal .modal-body {
+        padding: 10px; /* Less padding on mobile */
+    }
+    
+    .close-modal {
+        font-size: 16px; /* Slightly smaller close button */
+        padding: 4px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .file-preview-modal .modal-content {
+        width: 98%; /* Almost full width on very small screens */
+    }
+    
+    .file-preview-modal .modal-title {
+        font-size: 14px; /* Smaller title on very small screens */
+    }
+    
+    .file-preview-modal .modal-body {
+        min-height: 200px; /* Smaller minimum height */
+    }
+    
+    .download-actions {
+        flex-direction: column; /* Stack buttons vertically on very small screens */
+    }
+    
+    .preview-button, .download-button, .rename-button, .delete-button {
+        width: 100%; /* Full width buttons */
+        margin-bottom: 5px;
+    }
+}
+
+/* Preview Content Styles */
+.preview-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+}
+
+.preview-not-available {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.preview-not-available i {
+    margin-bottom: 20px;
+    color: #999;
+}
+
+/* Button Styles */
+.download-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.preview-button, .download-button, .rename-button, .delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;  /* Even smaller padding for more compact buttons */
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85em;  /* Smaller font size */
+    color: white;  /* Garantir que o texto seja branco em todos os botões */
+}
+
+/* Botões de ações regulares - mesmo estilo visual base */
+.preview-button, .download-button, .rename-button {
+    background-color: #5f5e5e;
+    color: white;
+}
+
+/* Botão de exclusão - mantém cor distinta */
+.delete-button {
+    background-color: #d93025;
+    color: white;
+}
+
+/* Efeito hover padronizado para os três primeiros botões */
+.preview-button:hover, .download-button:hover, .rename-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    background-color: #444;  /* Mesma cor de hover para todos */
+}
+
+.delete-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    background-color: #b3261e;  /* Mantém cor distinta para o botão de deletar */
+}
+
+/* Estilo de ícones padronizado */
+.preview-button i, .download-button i, .rename-button i, .delete-button i {
+    color: white;
+    margin: 0 4px;
+    font-size: 0.9em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Center the text vertically as well */
+.preview-button span, .download-button span, .rename-button span, .delete-button span {
+    vertical-align: middle;
+}
+
+/* For very small screens, show only icons */
+@media (max-width: 380px) {
+    .preview-button span, .download-button span, .rename-button span, .delete-button span {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .preview-button, .download-button, .rename-button, .delete-button {
+        width: 100%; /* Full width buttons */
+        margin-bottom: 4px;
+    }
+}
+
+/* Estilos para o botão de excluir pasta */
+.delete-folder-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85em;
+    color: white;
+    background-color: #d93025;
+    border: none;
+    margin-left: 8px;
+}
+
+.delete-folder-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    background-color: #b3261e;
+}
+
+.delete-folder-button i {
+    color: white;
+    margin-right: 4px;
+    font-size: 0.9em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Estilos para o botão de renomear pasta */
+.rename-folder-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85em;
+    color: white;
+    background-color: #5f5e5e;
+    border: none;
+    margin-left: 8px;
+}
+
+.rename-folder-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    background-color: #444;
+}
+
+.rename-folder-button i {
+    color: white;
+    margin-right: 4px;
+    font-size: 0.9em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ajuste para a área de ações de pasta */
+.folder-actions {
+    display: flex;
+    gap: 10px; /* Match the gap from download-actions */
+    margin-top: 10px;
+    justify-content: center;
+}
+
+/* Ajustes responsivos para botões de pasta */
+@media (max-width: 480px) {
+    .folder-button, .delete-folder-button, .rename-folder-button {
+        width: 100%;
+        margin-bottom: 5px;
+        margin-left: 0;
+    }
+    
+    .folder-actions {
+        flex-direction: column;
+    }
+}

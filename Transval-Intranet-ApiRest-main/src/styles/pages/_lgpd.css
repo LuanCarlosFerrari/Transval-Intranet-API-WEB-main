@@ -1,0 +1,91 @@
+/* Container for LGPD content */
+.lgpd-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Text content within LGPD section */
+.lgpd-text {
+    color: var(--color-white);
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    text-align: justify;
+    max-width: 900px;
+    width: 100%;
+    margin: var(--spacing-md) auto;
+    padding: 0 var(--spacing-md);
+}
+
+.lgpd-text p {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Download button styling */
+.lgpd-download-button {
+    display: block;
+    width: 250px;
+    margin: var(--spacing-md) auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    background-color: var(--color-white);
+    color: var(--color-white);
+    border: 2px solid var(--color-text);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: var(--transition-base);
+    font-size: var(--font-size-md);
+}
+
+.lgpd-download-button:hover {
+    background-color: var(--color-white);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-box);
+}
+
+/* Grouping buttons together */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: var(--spacing-lg) auto;
+}
+
+/* Title styling for sections */
+.company-title {
+    text-align: center;
+    margin: var(--spacing-md) auto var(--spacing-xl);
+    color: var(--color-white);
+    font-size: var(--font-size-huge);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--shadow-text);
+    width: 100%;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .lgpd-download-button {
+        width: 200px;
+        font-size: var(--font-size-base);
+    }
+
+    .lgpd-text {
+        font-size: var(--font-size-base);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .company-title {
+        font-size: var(--font-size-xxl);
+        margin: var(--spacing-sm) auto var(--spacing-lg);
+    }
+}

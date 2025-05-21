@@ -1,0 +1,104 @@
+/* Grid layout for client logos */
+.client-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+/* Individual client box styling */
+.client-box {
+    background: var(--bg-white-transparent);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    width: 250px; /* Increased from 200px */
+    height: 180px; /* Increased from 150px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.client-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-box);
+}
+
+/* Client logo styling */
+.client-box img {
+    max-width: 90%; /* Increased from 80% */
+    max-height: 70%; /* Increased from 60% */
+    object-fit: contain;
+    margin: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Client name styling */
+.client-box h3 {
+    color: var(--color-text);
+    text-align: center;
+    font-size: var(--font-size-md);
+    margin: 0;
+    padding: var(--spacing-xs);
+    width: 100%;
+    background-color: rgba(242, 242, 242, 0.8);
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Title styling for sections */
+.company-title {
+    text-align: center;
+    margin: var(--spacing-md) auto var(--spacing-xl);
+    color: var(--color-white);
+    font-size: var(--font-size-huge);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--shadow-text);
+    width: 100%;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .client-grid {
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+
+    .client-box {
+        width: 220px; /* Increased from 180px */
+        height: 160px; /* Increased from 135px */
+    }
+
+    .company-title {
+        font-size: var(--font-size-xxl);
+        margin: var(--spacing-sm) auto var(--spacing-lg);
+    }
+
+    .client-box h3 {
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 480px) {
+  .client-grid {
+    gap: var(--spacing-sm);
+  }
+  .client-box {
+    width: 100%;
+    max-width: 300px;
+  }
+}

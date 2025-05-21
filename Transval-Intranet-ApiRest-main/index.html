@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transval Transportation Services">
+    <meta name="keywords" content="logistics, transportation, Brazil">
+    <link rel="canonical" href="https://transval.net.br">
+    <link rel="icon" type="image/x-icon" href="./src/Assets/logo.png">
+    <title>Transval</title>
+    <link rel="stylesheet" href="src/styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./src/Assets/logo.png" alt="Logo da empresa">
+                </a>
+            </div>
+            <button class="mobile-menu-button" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <button class="nav-item" data-content="sobre">Sobre a empresa</button>
+                <button class="nav-item" data-content="unidades">Unidades</button>
+                <button class="nav-item" data-content="clientes">Clientes</button>
+                <button class="nav-item" data-content="LGPD">LGPD</button>
+                <button class="nav-item" data-content="SAC">SAC</button>
+            </nav>
+            <div class="login-container">
+                <button id="loginBtn" class="login-button">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="content-area">
+            <h2>Últimas noticias</h2>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <img src="./src/Assets/wp3704699-logistics-wallpapers.jpg" class="carousel-slide" alt="Slide 1">
+                    <div class="carousel-slide video-slide">
+                        <iframe id="youtubeVideo" width="100%" height="100%"
+                            src="https://www.youtube.com/embed/AFGSYgrNYQ8?enablejsapi=1&showinfo=0" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <img src="./src/Assets/wp7708047-logistic-wallpapers.jpg" class="carousel-slide" alt="Slide 3">
+                    <img src="./src/Assets/wp7708138-logistic-wallpapers.jpg" class="carousel-slide" alt="Slide 4">
+                </div>
+                <div class="carousel-navigation">
+                    <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+                    <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+                </div>
+            </div>
+            <div class="news-navigation">
+                <span class="current-news">1</span> / <span class="total-news">4</span>
+            </div>
+            <p class="news-content">WL Scania: Excelência em Transporte - Parceria Transval</p>
+        </section>
+        <!-- Removido: seção button-container com os botões originais -->
+    </main>
+    <footer class="footer-container">
+        <div class="footer-info">
+            <div class="footer-info-item">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                <span>+200 Caminhões dedicados exclusivamente</span>
+            </div>
+            <div class="footer-info-item">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span>+10.000 Veículos terceiros cadastrados</span>
+            </div>
+            <div class="footer-info-item">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>Presença em 12 estados brasileiros</span>
+            </div>
+            <div class="footer-info-item">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <span>+600 Colaboradores diretos</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/p/Transval-Transp-Valmir-100022314004814/" target="_blank"
+                    class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/transvaltransp/" target="_blank" class="social-icon"
+                    aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/transval-transportadora-valmir-ltda/" target="_blank"
+                    class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.youtube.com/transval" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./src/scripts/main.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvnB9za41xavx8j53crd45n_g5gc1Jylg&libraries=places&callback=initMap">
+        </script>
+    <div id="loginModal" class="modal" aria-hidden="true" aria-labelledby="loginModalTitle" role="dialog">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close" aria-label="Close">&times;</button>
+            <h2 id="loginModalTitle">Login</h2>
+            <div id="errorMessage" class="error-message" aria-live="polite"></div>
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password">
+            <button id="submitLoginBtn">Login</button>
+        </div>
+    </div>
+</body>
+
+</html>

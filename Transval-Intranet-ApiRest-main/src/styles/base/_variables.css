@@ -1,0 +1,49 @@
+:root {
+    /* Primary color palette */
+    --color-primary: #5b5e61;
+    --color-primary-dark: #5b5e61;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-light: #f0f0f0;
+    --color-gray: #ddd;
+    --color-text: #333;
+    
+    /* Background colors */
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    --bg-white-transparent: rgba(255, 255, 255, 0.9);
+    --bg-black-transparent: rgba(0, 0, 0, 0.6);
+    
+    /* Spacing variables */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Font sizes */
+    --font-size-sm: 0.9rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 1.4rem;
+    --font-size-xxl: 2.2rem;
+    --font-size-huge: 2.5rem;
+    
+    /* Layout dimensions */
+    --header-height: 70px;
+    --container-max-width: 1200px;
+    --button-width: 200px;
+    
+    /* Border radius values */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 20px;
+    --border-radius-circle: 50%;
+    
+    /* Transition effects */
+    --transition-base: all 0.3s ease;
+    
+    /* Box shadows */
+    --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-box: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

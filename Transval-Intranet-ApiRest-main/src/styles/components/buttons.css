@@ -1,0 +1,58 @@
+/* Estilo para o botão de nova pasta */
+.titulo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Remover estilos específicos do ID para usar apenas a classe compartilhada */
+.btn-gray {
+    background-color: #607D8B;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    display: inline-flex;  /* Mantém o inline-flex para melhor centralização */
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-gray:hover {
+    background-color: #455A64;
+}
+
+/* Container para botões de ação - corrigido para centralização perfeita */
+.action-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+/* Centralizar o botão dentro do container de ação */
+.action-button-container button {
+    margin: 0 auto;
+}
+
+/* Compatibilidade para o upload-container existente */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+/* Centralizar o botão dentro do container de upload */
+.upload-container button {
+    margin: 0 auto;
+}

@@ -1,0 +1,215 @@
+/* Container for the login section */
+.login-container {
+    margin-left: auto;
+    margin-right: 5px; /* Ajuste este valor para aumentar ou diminuir a margem direita */
+    padding: 0 var(--spacing-md);
+}
+
+/* Container for buttons, hidden by default */
+.button-container {
+    display: none;
+}
+
+.button-container.logged-in {
+    display: flex;
+    flex-direction: row; /* Alterado de 'line' para 'row' que é o valor correto */
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 800px; /* Adjust this value as needed */
+    padding: var(--spacing-sm);
+    position: absolute; /* Adicionar posicionamento absoluto */
+    top: 60px; /* Ajuste esta valor conforme necessário */
+    left: 50%;
+    transform: translateX(-50%); /* Centers horizontally */
+    z-index: 10; /* Garante que fique acima de outros elementos */
+    justify-content: center; /* Centers the buttons inside container */
+}
+
+/* Ajustando a altura dos botões dentro do container */
+.button-container.logged-in .action-button {
+    margin: 5px 0;
+    padding: 6px 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: visible; /* Changed from hidden to visible */
+    min-width: fit-content; /* Added to adjust to content */
+    width: auto; /* Added to allow button growth */
+    font-size: 0.9rem;
+}
+
+/* Styling for the login button */
+.login-button {
+    padding: 5px 20px; /* Aumenta o padding horizontal e vertical */
+    font-size: 1.0rem; /* Aumenta o tamanho da fonte */
+    min-width: 100px; /* Define uma largura mínima */
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the login button */
+.login-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px); /* Adiciona um efeito hover */
+}
+
+/* Styling for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}
+
+/* Add background overlay for the modal */
+.modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(5px); /* Optional: adds blur effect to background */
+    z-index: -1;
+}
+
+/* Styling for the modal content */
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto; /* Remove top margin */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Styling for the close button */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    background: var(--color-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+/* Hover and focus effects for the close button */
+.close:hover,
+.close:focus {
+    background: var(--color-primary-dark);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling for modal content header */
+.modal-content h2 {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Styling for modal content labels */
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Styling for modal content inputs */
+.modal-content input {
+    width: calc(100% - 0px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styling for modal content buttons */
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5b5e61;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for modal content buttons */
+.modal-content button:hover {
+    background-color: #5b5e61;
+}
+
+/* Styling for error messages */
+.error-message {
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+
+/* Styling for the post-login content sections */
+.post-login-content {
+    display: none;
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-login-content.active {
+    display: block;
+}
+
+/* Styling for the post-login content boxes */
+.post-login-box {
+    display: none;
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-md);
+}
+
+.post-login-box.active {
+    display: block;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .button-container.logged-in {
+        width: 95%; /* Slightly less than full width on mobile */
+        max-width: var(--button-width);
+        margin: 0 auto;
+    }
+    
+    .login-container {
+        padding: 0 var(--spacing-sm);
+    }
+}

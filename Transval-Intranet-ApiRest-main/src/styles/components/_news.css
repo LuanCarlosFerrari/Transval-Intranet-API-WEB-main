@@ -1,0 +1,77 @@
+/* Container for news navigation */
+.news-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-sm);
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--color-white);
+    background: var(--bg-black-transparent);
+    border-radius: var(--border-radius-lg);
+}
+
+/* Container for news content */
+.news-content {
+    color: var(--color-white);
+    padding: var(--spacing-md);
+    text-align: justify;
+    line-height: 1.6;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 0 var(--spacing-md);
+    text-shadow: var(--shadow-text);
+    display: none;
+}
+
+/* Styling for news navigation buttons */
+.news-nav-button {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.news-nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Styling for news indicator */
+.news-indicator {
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Styling for current news title */
+.current-news-title {
+    font-size: var(--font-size-sm);
+    font-weight: normal;
+    color: var(--color-white);
+    margin-left: var(--spacing-sm);
+    display: inline;
+    text-shadow: var(--shadow-text);
+}
+
+/* Styling for total news counter */
+.total-news {
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+}

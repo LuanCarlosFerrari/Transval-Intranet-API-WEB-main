@@ -1,0 +1,85 @@
+/* Container for the map */
+#map {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-box);
+    transition: var(--transition-base);
+}
+
+/* Container for units */
+.unidades-container {
+    padding: var(--spacing-sm); 
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); 
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background: var(--bg-black-transparent);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-box);
+}
+
+/* Adjust the title margin and font size */
+.unidades-container .company-title {
+    margin: var(--spacing-sm) auto; 
+    font-size: var(--font-size-xl); 
+}
+
+/* Styling for units select dropdown */
+.unidades-select {
+    width: 300px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid var(--color-primary);
+    background-color: var(--bg-white-transparent);
+    color: var(--color-text);
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm); 
+    cursor: pointer;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-box);
+}
+
+.unidades-select:hover {
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.unidades-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 900px) {
+    #map {
+        width: 100%;
+        height: calc(100vh - 150px);
+    }
+}
+
+@media (max-width: 768px) {
+    .unidades-select {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #map {
+        height: 400px;
+    }
+}
+
+/* Styling for map marker info */
+.map-marker-info {
+    padding: var(--spacing-sm);
+    background: var(--bg-white-transparent);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-box);
+}

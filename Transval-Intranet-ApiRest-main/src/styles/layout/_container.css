@@ -1,0 +1,103 @@
+/* Main container layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    min-height: calc(100vh - 200px);
+    margin-bottom: 65px; 
+    margin-top: 80px;
+}
+
+/* Styling for content area */
+.content-area {
+    flex: 1;
+    padding: var(--spacing-md);
+    position: relative;
+    background-color: var(--bg-black-transparent);
+    border-radius: var(--border-radius-md);
+    width: 100%; /* Added for full width */
+    height: calc(100vh - var(--header-height) - 65px - 40px); 
+    overflow-y: auto;
+    box-shadow: var(--shadow-box);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Changed from center to stretch */
+    justify-content: center;
+}
+
+/* Initial view container layout */
+.initial-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(90vh - 200px);
+    padding-top: var(--spacing-xl);
+    width: 100%;
+    text-align: center;
+}
+
+/* Tab content container styling */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    height: calc(100vh - 300px);
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Content wrapper layout */
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+}
+
+/* Custom scrollbar styling */
+.tab-content {
+    /* Webkit browsers */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius-sm);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: var(--border-radius-sm);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .main-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .content-area {
+        padding: var(--spacing-sm);
+    }
+
+    .initial-view {
+        padding-top: var(--spacing-md);
+    }
+}
