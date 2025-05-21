@@ -2,6 +2,7 @@ import { initCarousel } from '../carousel/carousel.js';
 import { initAutoSlide } from '../carousel/autoSlide.js';
 import { initVideoPlayer } from '../carousel/videoPlayer.js';
 import { initResourceHub, initResourceHubEvents } from '../content/resourceHub.js';
+import { initializeDownloadsData } from '../content/download.js';
 
 export function initLogin() {
     const loginBtn = document.getElementById('loginBtn');
@@ -116,11 +117,21 @@ export function initLogin() {
             const adminElements = document.querySelectorAll('.admin-only');
             adminElements.forEach(el => el.style.display = 'block');
 
-            // Substituir o carrossel pelo ResourceHub imediatamente após o login
-            const contentArea = document.querySelector('.content-area');
-            contentArea.innerHTML = initResourceHub();
-            // Inicializar os eventos dos botões do ResourceHub
-            initResourceHubEvents();
+            // Substituir o carrossel pelo ResourceHub após o login, garantindo que os dados sejam carregados primeiro
+            initializeDownloadsData()
+                .then(() => {
+                    const contentArea = document.querySelector('.content-area');
+                    contentArea.innerHTML = initResourceHub();
+                    // Inicializar os eventos dos botões do ResourceHub
+                    initResourceHubEvents();
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados iniciais após login:', error);
+                    // Mostrar ResourceHub mesmo em caso de erro
+                    const contentArea = document.querySelector('.content-area');
+                    contentArea.innerHTML = initResourceHub();
+                    initResourceHubEvents();
+                });
 
         } catch (error) {
             console.error('Erro ao fazer login:', error);
@@ -180,11 +191,21 @@ export function initLogin() {
             const adminElements = document.querySelectorAll('.admin-only');
             adminElements.forEach(el => el.style.display = 'block');
 
-            // Se já estiver logado, mostrar o ResourceHub em vez do carrossel
-            const contentArea = document.querySelector('.content-area');
-            contentArea.innerHTML = initResourceHub();
-            // Inicializar os eventos dos botões do ResourceHub
-            initResourceHubEvents();
+            // Se já estiver logado, mostrar o ResourceHub em vez do carrossel, garantindo que os dados sejam carregados primeiro
+            initializeDownloadsData()
+                .then(() => {
+                    const contentArea = document.querySelector('.content-area');
+                    contentArea.innerHTML = initResourceHub();
+                    // Inicializar os eventos dos botões do ResourceHub
+                    initResourceHubEvents();
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados iniciais em verificação de autenticação:', error);
+                    // Mostrar ResourceHub mesmo em caso de erro
+                    const contentArea = document.querySelector('.content-area');
+                    contentArea.innerHTML = initResourceHub();
+                    initResourceHubEvents();
+                });
 
         } catch (error) {
             console.error('Erro ao verificar autenticação:', error);
