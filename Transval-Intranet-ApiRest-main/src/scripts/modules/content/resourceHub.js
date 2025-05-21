@@ -46,9 +46,17 @@ export function initResourceHub() {
                         <div class="resource-content">
                             <h3>${config.title}</h3>
                             <p>${config.description}</p>
-                            <a href="javascript:void(0)" class="resource-button" data-category="${config.title}" data-type="downloads">
-                                <i class="fas fa-eye"></i> Acessar
-                            </a>
+                            <div class="resource-actions">
+                                <a href="javascript:void(0)" class="resource-button" data-category="${config.title}" data-type="downloads">
+                                    <i class="fas fa-eye"></i> Acessar
+                                </a>
+                                <button class="rename-folder-button" data-category="${config.title}">
+                                    <i class="fas fa-edit"></i> Renomear
+                                </button>
+                                <button class="delete-folder-button" data-category="${config.title}">
+                                    <i class="fas fa-trash"></i> Excluir
+                                </button>
+                            </div>
                         </div>
                     </div>`;
                 renderedTitles.add(config.title);
@@ -62,9 +70,17 @@ export function initResourceHub() {
                     <div class="resource-content">
                         <h3>${config.title}</h3>
                         <p>${config.description}</p>
-                        <a href="javascript:void(0)" class="resource-button" data-category="${config.title}" data-type="contacts">
-                            <i class="fas fa-eye"></i> Acessar
-                        </a>
+                        <div class="resource-actions">
+                            <a href="javascript:void(0)" class="resource-button" data-category="${config.title}" data-type="contacts">
+                                <i class="fas fa-eye"></i> Acessar
+                            </a>
+                            <button class="rename-folder-button" data-category="${config.title}">
+                                <i class="fas fa-edit"></i> Renomear
+                            </button>
+                            <button class="delete-folder-button" data-category="${config.title}">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
                     </div>
                 </div>`;
             renderedTitles.add(config.title);
@@ -81,9 +97,17 @@ export function initResourceHub() {
                         <div class="resource-content">
                             <h3>${folder.title}</h3>
                             <p>Acesse os arquivos da seção ${folder.title}.</p>
-                            <a href="javascript:void(0)" class="resource-button" data-category="${folder.title}" data-type="downloads">
-                                <i class="fas fa-eye"></i> Acessar
-                            </a>
+                            <div class="resource-actions">
+                                <a href="javascript:void(0)" class="resource-button" data-category="${folder.title}" data-type="downloads">
+                                    <i class="fas fa-eye"></i> Acessar
+                                </a>
+                                <button class="rename-folder-button" data-category="${folder.title}">
+                                    <i class="fas fa-edit"></i> Renomear
+                                </button>
+                                <button class="delete-folder-button" data-category="${folder.title}">
+                                    <i class="fas fa-trash"></i> Excluir
+                                </button>
+                            </div>
                         </div>
                     </div>`;
             }

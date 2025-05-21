@@ -341,38 +341,9 @@ export function initDownloadsSection(selectedCategory = null) {
     `;
 }
 
-// Função para deletar uma pasta
-function deleteFolder(folderName) {
-    return new Promise((resolve, reject) => {
-        // Determinar a URL base para requisições
-        let baseUrl = '/api/delete-folder';  // Alterado para usar um endpoint específico
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            baseUrl = `http://localhost:3000/api/delete-folder`;  // Alterado para corresponder
-        }
 
-        fetch(baseUrl, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ folderName })  // Passando o nome da pasta no corpo da requisição
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Falha na exclusão: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Pasta deletada com sucesso:', data);
-                resolve(data);
-            })
-            .catch(error => {
-                console.error('Erro ao deletar pasta:', error);
-                reject(error);
-            });
-    });
-}
+
+// A função deleteFolder foi substituida pela implementação exportada no topo do arquivo
 
 // Substituir a função syncFolderContentsWithServer para usar a nova abordagem
 async function syncFolderContentsWithServer() {
@@ -746,6 +717,62 @@ export async function createFolder(folderName) {
             const errorMessage = error.message || 'Erro desconhecido ao criar pasta';
 
             alert(`Erro ao criar pasta: ${errorMessage}\n\nPor favor, verifique se o servidor está em execução e contate o suporte técnico se o problema persistir.`);
+
+            reject(error);
+        }
+    });
+}
+
+// Função para deletar pasta com atualização automática dos dados
+export async function deleteFolder(folderName) {
+    return new Promise(async (resolve, reject) => {
+        // Determinar a URL base para requisições
+        let baseUrl = '/api/delete-folder';  // Endpoint correto
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            baseUrl = `http://localhost:3000/api/delete-folder`;  // Endpoint correto
+        }
+
+        console.log(`Tentando excluir pasta com nome: "${folderName}" usando: ${baseUrl}`);
+
+        try {
+            const response = await fetch(baseUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ folderName: folderName })  // Usar folderName conforme esperado pelo backend
+            });
+
+            // Verificando a resposta com log mais detalhado
+            console.log(`Status de resposta: ${response.status} ${response.statusText}`);
+
+            if (!response.ok) {
+                // Tentar ler o erro mesmo quando a resposta não é ok
+                let errorDetail = '';
+                try {
+                    const errorResponse = await response.text();
+                    errorDetail = errorResponse;
+                } catch {
+                    errorDetail = 'Nenhum detalhe disponível';
+                }
+
+                throw new Error(`Falha na exclusão da pasta: ${response.status} - Detalhes: ${errorDetail}`);
+            }
+
+            const data = await response.json();
+            console.log('Pasta excluída com sucesso:', data);
+
+            // Atualizar os dados locais
+            await initializeDownloadsData();
+
+            resolve(data);
+        } catch (error) {
+            console.error('Erro ao excluir pasta:', error);
+
+            // Exibir mensagem mais útil para o usuário
+            const errorMessage = error.message || 'Erro desconhecido ao excluir pasta';
+
+            alert(`Erro ao excluir pasta: ${errorMessage}\n\nPor favor, verifique se o servidor está em execução e contate o suporte técnico se o problema persistir.`);
 
             reject(error);
         }
