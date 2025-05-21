@@ -51,18 +51,25 @@ export function initLogin() {
             initAutoSlide();
             initVideoPlayer();
         } else {
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
     });
 
-    closeModalBtn.addEventListener('click', function () {
+    function handleCloseModalClick() {
+        console.log('[DEBUG] Botão fechar modal clicado');
         modal.style.display = 'none';
-    });
+        // Limpar campos de texto quando o modal é fechado
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('errorMessage').textContent = '';
+    }
+
+    closeModalBtn.addEventListener('click', handleCloseModalClick);
 
     submitLoginBtn.addEventListener('click', async function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('login-error');
+        const errorMessage = document.getElementById('errorMessage');
 
         if (!username || !password) {
             errorMessage.textContent = 'Por favor, preencha todos os campos.';
