@@ -46,26 +46,42 @@ async function initializeDownloadsData() {
             // 4. Inicializar a cópia de trabalho
             downloadsData = JSON.parse(JSON.stringify(downloadsDataTemplate));
 
-            // 5. Para cada pasta, buscar seus arquivos e preparar o folderContents
+            // 5. Para cada pasta, buscar seus arquivos e subpastas e preparar o folderContents
             for (const folder of foldersData.folders) {
                 try {
-                    const filesResponse = await fetch(`${baseUrl}/api/list/${folder}`);
-                    if (filesResponse.ok) {
-                        const filesData = await filesResponse.json();
-
-                        if (filesData.files && filesData.files.length > 0) {
-                            folderContents[folder] = filesData.files.map(file => ({
-                                name: file.name,
-                                path: file.path,
-                                icon: getFileIcon(file.path),
-                                info: `Arquivo da pasta ${folder}`
-                            }));
-                        } else {
-                            folderContents[folder] = [];
+                    const contentResponse = await fetch(`${baseUrl}/api/list/${folder}`);
+                    if (contentResponse.ok) {
+                        const contentData = await contentResponse.json();
+                        folderContents[folder] = [];
+                        
+                        // Processar as subpastas retornadas pela API
+                        if (contentData.folders && contentData.folders.length > 0) {
+                            contentData.folders.forEach(subfolder => {
+                                folderContents[folder].push({
+                                    name: subfolder,
+                                    path: `${folder}/${subfolder}`,
+                                    type: 'folder',
+                                    icon: 'fa-folder',
+                                    info: `Subpasta de ${folder}`
+                                });
+                            });
+                        }
+                        
+                        // Processar os arquivos
+                        if (contentData.files && contentData.files.length > 0) {
+                            contentData.files.forEach(file => {
+                                folderContents[folder].push({
+                                    name: file.name,
+                                    path: file.path,
+                                    type: 'file',
+                                    icon: getFileIcon(file.path),
+                                    info: `Arquivo da pasta ${folder}`
+                                });
+                            });
                         }
                     }
                 } catch (error) {
-                    console.error(`Erro ao carregar arquivos da pasta ${folder}:`, error);
+                    console.error(`Erro ao carregar conteúdo da pasta ${folder}:`, error);
                     folderContents[folder] = [];
                 }
             }
@@ -684,9 +700,9 @@ function deleteFile(filePath) {
 export async function createFolder(folderName) {
     return new Promise(async (resolve, reject) => {
         // Determinar a URL base para requisições
-        let baseUrl = '/api/folders';  // Ajustado para um formato mais RESTful
+        let baseUrl = '/api/create-folder';  // Endpoint correto
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            baseUrl = `http://localhost:3000/api/folders`;  // Ajustado para corresponder
+            baseUrl = `http://localhost:3000/api/create-folder`;  // Endpoint correto
         }
 
         console.log(`Tentando criar pasta com nome: "${folderName}" em: ${baseUrl}`);
@@ -697,7 +713,7 @@ export async function createFolder(folderName) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name: folderName })  // Alterado para usar 'name' em vez de 'folderName'
+                body: JSON.stringify({ path: folderName })  // Corrigido para usar 'path' conforme esperado pelo backend
             });
 
             // Verificando a resposta com log mais detalhado
