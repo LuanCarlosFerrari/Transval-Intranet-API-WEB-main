@@ -405,22 +405,65 @@ exports.listAllFolders = (req, res) => {
     try {
         // Verificar se o diretório base existe
         if (!fs.existsSync(baseDir)) {
+            fs.mkdirSync(baseDir, { recursive: true });
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ folders: [] }));
             return;
         }
 
-        // Listar todas as pastas (diretórios)
+        // Listar todas as pastas no diretório de downloads
         const folders = fs.readdirSync(baseDir, { withFileTypes: true })
             .filter(dirent => dirent.isDirectory())
             .map(dirent => dirent.name);
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ folders }));
-        console.log(`Listadas ${folders.length} pastas`);
+        console.log(`Listadas ${folders.length} pastas disponíveis`);
     } catch (error) {
-        console.error('Erro ao listar pastas:', error);
+        console.error('Erro ao listar pastas disponíveis:', error);
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Erro ao listar pastas' }));
+    }
+};
+
+// Função para criar nova pasta ou subpasta
+exports.createFolder = (req, res) => {
+    try {
+        // Verificar se o corpo do request contém o parâmetro 'path'
+        const folderPath = req.body.path;
+        if (!folderPath) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Caminho da pasta não fornecido' }));
+            return;
+        }
+
+        // Sanitize o caminho da pasta para garantir que está dentro da pasta de downloads
+        // e não contém caracteres problemáticos
+        const sanitizedPath = folderPath.replace(/\.\.\//g, '').replace(/\.\./g, '');
+        
+        // Construir o caminho completo da pasta
+        const fullPath = path.join(ROOT_DIR, 'src', 'downloads', sanitizedPath);
+        
+        // Verificar se a pasta já existe
+        if (fs.existsSync(fullPath)) {
+            res.writeHead(409, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Esta pasta já existe' }));
+            return;
+        }
+        
+        // Criar a pasta
+        fs.mkdirSync(fullPath, { recursive: true });
+        
+        res.writeHead(201, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ 
+            success: true, 
+            message: 'Pasta criada com sucesso',
+            path: folderPath
+        }));
+        console.log(`Pasta criada com sucesso: ${folderPath}`);
+    } catch (error) {
+        console.error('Erro ao criar pasta:', error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Erro ao criar pasta', details: error.message }));
     }
 };

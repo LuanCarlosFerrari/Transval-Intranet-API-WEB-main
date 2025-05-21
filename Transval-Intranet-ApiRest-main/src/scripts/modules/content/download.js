@@ -895,6 +895,62 @@ export function addEventListeners() {
             }
         });
     });
+    
+    // Add subfolder button listeners for navigating to subfolders
+    document.querySelectorAll('.subfolder-button').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const folderPath = e.currentTarget.dataset.path;
+            const parentCategory = e.currentTarget.dataset.parent;
+            
+            console.log(`Clicked on subfolder: ${folderPath}`);
+            
+            try {
+                // Mostrar indicador de carregamento
+                contentArea.innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-spinner fa-spin fa-3x"></i>
+                        <p>Carregando conteúdo da pasta...</p>
+                    </div>
+                `;
+                
+                // Carregar conteúdo da subpasta
+                const contents = await loadFolderContents(folderPath);
+                
+                // Criar objeto de categoria temporário para a subpasta
+                const folderName = folderPath.split('/').pop(); // Último segmento do caminho
+                const subfolderCategory = {
+                    title: folderName,
+                    path: folderPath,
+                    parentPath: parentCategory,
+                    downloads: contents
+                };
+                
+                // Renderizar a exibição dos conteúdos da subpasta
+                contentArea.innerHTML = initDownloadsSection(subfolderCategory);
+                
+                // Reinicializar todos os event listeners
+                addEventListeners();
+            } catch (error) {
+                console.error('Erro ao carregar subpasta:', error);
+                contentArea.innerHTML = `
+                    <div class="error-container">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Erro ao carregar os conteúdos da pasta. Por favor, tente novamente.</p>
+                        <button class="back-button">Voltar</button>
+                    </div>
+                `;
+                
+                // Adicionar evento ao botão de voltar na mensagem de erro
+                const errorBackBtn = document.querySelector('.error-container .back-button');
+                if (errorBackBtn) {
+                    errorBackBtn.addEventListener('click', () => {
+                        contentArea.innerHTML = initResourceHub();
+                        initResourceHubEvents();
+                    });
+                }
+            }
+        });
+    });
 
     // Modified back button listener (keep existing code)
     const backBtn = document.querySelector('.back-button');
@@ -940,6 +996,78 @@ export function addEventListeners() {
         });
     });
 
+    // Add create subfolder button listeners
+    document.querySelectorAll('.create-subfolder-button').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const categoryTitle = e.target.dataset.category;
+            // Extrair o caminho atual a partir do botão ou da URL
+            let currentPath = categoryTitle;
+            
+            // Se estamos em uma subpasta, o data-category seria o nome da pasta
+            // e precisamos construir o caminho completo
+            if (document.querySelector('.subfolder-button')) {
+                const subfolderBtn = document.querySelector('.subfolder-button');
+                const parentPath = subfolderBtn.dataset.parent;
+                // Se estivermos em uma subpasta, o caminho é mais complexo
+                if (subfolderBtn.dataset.path && subfolderBtn.dataset.path.includes('/')) {
+                    currentPath = subfolderBtn.dataset.path.split('/')[0];
+                }
+            }
+            
+            const subfolderName = prompt('Digite o nome da nova subpasta:');
+            
+            if (subfolderName && subfolderName.trim() !== '') {
+                try {
+                    // Construir o caminho completo da nova subpasta
+                    const fullPath = `${currentPath}/${subfolderName.trim()}`;
+                    
+                    // Mostrar feedback de carregamento
+                    const uploadContainer = btn.closest('.upload-container');
+                    if (uploadContainer) {
+                        uploadContainer.innerHTML += `<div class="loading-message">Criando subpasta...</div>`;
+                    }
+                    
+                    // Determinar a URL base
+                    let baseUrl = '/api/create-folder';
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        baseUrl = `http://localhost:3000/api/create-folder`;
+                    }
+                    
+                    // Fazer a requisição para criar a subpasta
+                    const response = await fetch(baseUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ path: fullPath })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`Erro ao criar subpasta: ${response.status}`);
+                    }
+                    
+                    // Recarregar a página atual para mostrar a nova subpasta
+                    const currentCategory = downloadsData.find(cat => cat.title === categoryTitle);
+                    if (currentCategory) {
+                        // Atualizar dados da categoria atual
+                        currentCategory.downloads = await loadFolderContents(currentPath);
+                        contentArea.innerHTML = initDownloadsSection(currentCategory);
+                        addEventListeners();
+                    }
+                    
+                    alert(`Subpasta "${subfolderName}" criada com sucesso!`);
+                } catch (error) {
+                    console.error('Erro ao criar subpasta:', error);
+                    alert(`Erro ao criar subpasta: ${error.message || 'Erro desconhecido'}`);
+                } finally {
+                    // Remover mensagem de carregamento
+                    const loadingMsg = document.querySelector('.loading-message');
+                    if (loadingMsg) loadingMsg.remove();
+                }
+            }
+        });
+    });
+    
     // Add upload button listeners
     document.querySelectorAll('.upload-button').forEach(btn => {
         btn.addEventListener('click', (e) => {

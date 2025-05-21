@@ -151,6 +151,21 @@ exports.handleRequest = async (req, res) => {
         }
         return;
     }
+    
+    // Criar pasta ou subpasta (rota protegida)
+    if (req.method === 'POST' && pathname === '/api/create-folder') {
+        // Aqui você poderia adicionar autenticação se necessário
+        try {
+            const bodyStr = await readBody(req);
+            req.body = JSON.parse(bodyStr);
+            fileController.createFolder(req, res);
+        } catch (error) {
+            console.error('Erro ao processar requisição de criação de pasta:', error);
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Requisição inválida', details: error.message }));
+        }
+        return;
+    }
 
     // Adicionar um novo endpoint para renomear arquivos
     if (req.method === 'POST' && pathname === '/api/rename-file') {
